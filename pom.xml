@@ -11,6 +11,9 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd_HHmm</maven.build.timestamp.format>
+
         <spring.version>6.0.11</spring.version>
         <spring-boot.version>3.1.3</spring-boot.version>
         <spring-security.version>6.1.2</spring-security.version>
@@ -25,8 +28,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-
-
     <dependencies>
         <!-- Spring Framework -->
         <dependency>
@@ -296,11 +297,11 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-      <repository>
-        <id>codeartifact</id>
-        <name>codeartifact</name>
-    <url>https://domainame-accountid.d.codeartifact.regioncode.amazonaws.com/maven/maven-central-store/</url>
-      </repository>
-    </repositories>
+    <distributionManagement>
+    <repository>
+        <id>vpropath-maven-central-store</id>
+        <name>vpropath-maven-central-store</name>
+        <url>https://vpropath-598189530267.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
+    </repository>
+    </distributionManagement>
 </project>
