@@ -2,12 +2,14 @@
 
 - This project involves setting up of a continous integration pipeline for v-profile application written in Java. We would be using the below AWS web services for this project:
 
-    - Code Commit 
-    - Code Build
-    - Code Artifacts
-    - Code Pipeline
-    - Code Deploy 
-    - S3 storage
+    - Code Commit               | Used for code management 
+    - Code Build                | Used for building artifacts
+    - Code Artifacts            | Used to storing the dependencies for the project 
+    - Code Pipeline             | Consolidating the CI pipeline, triggers with a git push to code commit
+    - Code Deploy               | Deploys artifacts to S3 bucket
+    - S3 storage                | Used for storing the artifacts 
+    - Amazon EventBridge        | Used as bridge between code pipeline and SNS topic for pipeline notifications
+    - SNS topic and notification service                | Notification service
     
 ## Project Architecture 
 
@@ -69,3 +71,8 @@ echo $CODEARTIFACT_AUTH_TOKEN                   | Copy the output and update it 
 6) Create a pipeline job to connect every build
 
     - Go to code pipeline and select create Pipeline 
+    - Choose custom pipeline so we can integrate all other jobs 
+    - Need to create an Eventbridge service also for notifications. Make sure to add the notification rule we created as a target. 
+    - Complete pipeline set up and add notification rule via settings, you can also add notfication at the build job stage.  
+
+## This completes the CI project, you can try a git push command after making a change and the build/pipeline would be triggered
